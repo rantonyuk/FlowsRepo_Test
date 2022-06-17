@@ -333,7 +333,7 @@
         "type": "function",
         "z": "idTab1-devcomputenode-0",
         "name": "",
-        "func": "console.log('hi to you 2');\nreturn msg;",
+        "func": "console.log('hi to you - worked!');\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -345,6 +345,71 @@
             [
                 "idDebug1"
             ]
+        ]
+    },
+    {
+        "id": "ff279ac1551e1220",
+        "type": "switch",
+        "z": "idTab1-devcomputenode-0",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 400,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "234a7a48d3defd40",
+        "type": "function",
+        "z": "idTab1-devcomputenode-0",
+        "name": "",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 210,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b53e5987dda84a56",
+        "type": "change",
+        "z": "idTab1-devcomputenode-0",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 580,
+        "wires": [
+            []
         ]
     }
 ]
