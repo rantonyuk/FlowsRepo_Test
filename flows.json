@@ -333,7 +333,7 @@
         "type": "function",
         "z": "idTab1-devcomputenode-0",
         "name": "",
-        "func": "console.log('hi to you');\nreturn msg;",
+        "func": "console.log('hi to you 2');\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
