@@ -238,7 +238,8 @@
         "y": 100,
         "wires": [
             [
-                "idSimulation1-idTab1"
+                "idSimulation1-idTab1",
+                "7a96e87ce2e60bcf"
             ]
         ]
     },
@@ -264,10 +265,11 @@
         "payload": "stop",
         "payloadType": "str",
         "x": 100,
-        "y": 140,
+        "y": 160,
         "wires": [
             [
-                "idSimulation1-idTab1"
+                "idSimulation1-idTab1",
+                "7a96e87ce2e60bcf"
             ]
         ]
     },
@@ -323,64 +325,6 @@
         "wires": [
             [
                 "d7be88a9530b8054"
-            ]
-        ]
-    },
-    {
-        "id": "44ffc489a0f4e7d1",
-        "type": "inject",
-        "z": "idTab1-devcomputenode-0",
-        "name": "state:start",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "state",
-        "payload": "start",
-        "payloadType": "str",
-        "x": 100,
-        "y": 240,
-        "wires": [
-            [
-                "7a96e87ce2e60bcf"
-            ]
-        ]
-    },
-    {
-        "id": "30751cfe4aba36a9",
-        "type": "inject",
-        "z": "idTab1-devcomputenode-0",
-        "name": "state:stop",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "state",
-        "payload": "stop",
-        "payloadType": "str",
-        "x": 100,
-        "y": 280,
-        "wires": [
-            [
-                "7a96e87ce2e60bcf"
             ]
         ]
     },
