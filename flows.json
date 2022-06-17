@@ -1,0 +1,303 @@
+[
+    {
+        "id": "idTab0-Global",
+        "type": "tab",
+        "label": "Start/Stop Global",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "idTab1-devcomputenode-0",
+        "type": "tab",
+        "label": "devcomputenode-0",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "idMqttBroker1",
+        "type": "mqtt-broker",
+        "name": "Node 192.168.0.12",
+        "broker": "192.168.0.12",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "c936f2442ec9a858",
+        "type": "git-nodes-config",
+        "name": "Roksolana Antonyuk",
+        "git": "git@github.com:rantonyuk/FlowsRepo_Test.git"
+    },
+    {
+        "id": "idStart-Tab0",
+        "type": "inject",
+        "z": "idTab0-Global",
+        "name": "state:start",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "state",
+        "payload": "start",
+        "payloadType": "str",
+        "x": 100,
+        "y": 100,
+        "wires": [
+            [
+                "idLinkOut-Tab0"
+            ]
+        ]
+    },
+    {
+        "id": "idStop-Tab0",
+        "type": "inject",
+        "z": "idTab0-Global",
+        "name": "state:stop",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "state",
+        "payload": "stop",
+        "payloadType": "str",
+        "x": 100,
+        "y": 150,
+        "wires": [
+            [
+                "idLinkOut-Tab0"
+            ]
+        ]
+    },
+    {
+        "id": "idLinkOut-Tab0",
+        "type": "link out",
+        "z": "idTab0-Global",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "idlinkIn-idTab1"
+        ],
+        "x": 245,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "idMqttOut1",
+        "type": "mqtt out",
+        "z": "idTab1-devcomputenode-0",
+        "name": "Node 192.168.0.12",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "idMqttBroker1",
+        "x": 850,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "idDebug1",
+        "type": "debug",
+        "z": "idTab1-devcomputenode-0",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 110,
+        "wires": []
+    },
+    {
+        "id": "idFunction-idSimulation1-idTab1",
+        "type": "function",
+        "z": "idTab1-devcomputenode-0",
+        "name": "",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 110,
+        "wires": [
+            [
+                "idMqttOut1",
+                "idDebug1"
+            ]
+        ]
+    },
+    {
+        "id": "idSimulation1-idTab1",
+        "type": "single-value",
+        "z": "idTab1-devcomputenode-0",
+        "name": "my temp meter:temperature:1",
+        "deviceId": "Temperature:1",
+        "deviceType": "DeviceMeasurement",
+        "mqttTopic": null,
+        "controlledProperty": [
+            "temperature"
+        ],
+        "source": "devcomputenode-0",
+        "unit": "C",
+        "interval": 1000,
+        "initialValue": "15",
+        "decimalPrecision": "1",
+        "step": "0.1",
+        "formula": "sinusoidal",
+        "minValue": 18,
+        "maxValue": "35",
+        "maxChange": "",
+        "slope": "",
+        "offset": 0,
+        "coefficient": "",
+        "exponent": "",
+        "a": "",
+        "b": "",
+        "c": 0,
+        "base": "",
+        "amplitude": 15,
+        "frequency": 0.1,
+        "verticalShift": 0,
+        "horizontalShift": 1,
+        "x": 370,
+        "y": 100,
+        "wires": [
+            [
+                "idFunction-idSimulation1-idTab1"
+            ]
+        ]
+    },
+    {
+        "id": "idStart-idSimulation1-idTab1",
+        "type": "inject",
+        "z": "idTab1-devcomputenode-0",
+        "name": "state:start",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "state",
+        "payload": "start",
+        "payloadType": "str",
+        "x": 100,
+        "y": 100,
+        "wires": [
+            [
+                "idSimulation1-idTab1"
+            ]
+        ]
+    },
+    {
+        "id": "idStop-idSimulation1-idTab1",
+        "type": "inject",
+        "z": "idTab1-devcomputenode-0",
+        "name": "state:stop",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "state",
+        "payload": "stop",
+        "payloadType": "str",
+        "x": 100,
+        "y": 140,
+        "wires": [
+            [
+                "idSimulation1-idTab1"
+            ]
+        ]
+    },
+    {
+        "id": "idlinkIn-idTab1",
+        "type": "link in",
+        "z": "idTab1-devcomputenode-0",
+        "name": "",
+        "links": [],
+        "x": 50,
+        "y": 20,
+        "wires": [
+            [
+                "idSimulation1-idTab1"
+            ]
+        ]
+    },
+    {
+        "id": "a324b7b3fc2080b0",
+        "type": "git-nodes",
+        "z": "idTab1-devcomputenode-0",
+        "label": "FlowsRepo_Test",
+        "branch": "main",
+        "sourcebranch": "main",
+        "gitadd": "flows.json, settings.js",
+        "gitrmcache": "nodes/*/x,nodes/*/y,nodes/*/z",
+        "debugging": true,
+        "git": "c936f2442ec9a858",
+        "x": 220,
+        "y": 260,
+        "wires": []
+    }
+]
