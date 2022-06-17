@@ -286,18 +286,121 @@
         ]
     },
     {
-        "id": "a324b7b3fc2080b0",
-        "type": "git-nodes",
+        "id": "7a96e87ce2e60bcf",
+        "type": "single-value",
         "z": "idTab1-devcomputenode-0",
-        "label": "FlowsRepo_Test",
-        "branch": "main",
-        "sourcebranch": "main",
-        "gitadd": "flows.json, settings.js",
-        "gitrmcache": "nodes/*/x,nodes/*/y,nodes/*/z",
-        "debugging": true,
-        "git": "c936f2442ec9a858",
-        "x": 220,
-        "y": 260,
-        "wires": []
+        "name": "therm:temperature:2",
+        "deviceId": "Temperature:1",
+        "deviceType": "DeviceMeasurement",
+        "mqttTopic": "",
+        "controlledProperty": [
+            "temperature"
+        ],
+        "source": "devcomputenode-0",
+        "unit": "C",
+        "interval": 1000,
+        "initialValue": "15",
+        "decimalPrecision": "1",
+        "step": "0.1",
+        "formula": "sinusoidal",
+        "minValue": 18,
+        "maxValue": "35",
+        "maxChange": "",
+        "slope": "",
+        "offset": 0,
+        "coefficient": "",
+        "exponent": "",
+        "a": "",
+        "b": "",
+        "c": 0,
+        "base": "",
+        "amplitude": 15,
+        "frequency": 0.1,
+        "verticalShift": 0,
+        "horizontalShift": 1,
+        "x": 320,
+        "y": 240,
+        "wires": [
+            [
+                "d7be88a9530b8054"
+            ]
+        ]
+    },
+    {
+        "id": "44ffc489a0f4e7d1",
+        "type": "inject",
+        "z": "idTab1-devcomputenode-0",
+        "name": "state:start",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "state",
+        "payload": "start",
+        "payloadType": "str",
+        "x": 100,
+        "y": 240,
+        "wires": [
+            [
+                "7a96e87ce2e60bcf"
+            ]
+        ]
+    },
+    {
+        "id": "30751cfe4aba36a9",
+        "type": "inject",
+        "z": "idTab1-devcomputenode-0",
+        "name": "state:stop",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "state",
+        "payload": "stop",
+        "payloadType": "str",
+        "x": 100,
+        "y": 280,
+        "wires": [
+            [
+                "7a96e87ce2e60bcf"
+            ]
+        ]
+    },
+    {
+        "id": "d7be88a9530b8054",
+        "type": "function",
+        "z": "idTab1-devcomputenode-0",
+        "name": "",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 240,
+        "wires": [
+            [
+                "idDebug1"
+            ]
+        ]
     }
 ]
